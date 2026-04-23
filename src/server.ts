@@ -13,7 +13,10 @@ app.get("/", (req, res) => {
   res.send("CLEA backend running");
 });
 
-app.use("/api/auth", authRoutes)
+
+//routes
+app.use("/api/auth", authRoutes);
+
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server running...");
