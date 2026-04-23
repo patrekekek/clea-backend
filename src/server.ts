@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import authRoutes from "./routes/authRoutes"
+import attendanceRoutes from "./routes/attendanceRoutes"
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 
 //routes
 app.use("/api/auth", authRoutes);
+app.use("/api/attendance", attendanceRoutes)
 
 
 app.listen(process.env.PORT || 5000, () => {
