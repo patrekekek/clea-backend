@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
-import { createAttendance } from "../services/attendanceService";
+import { createAttendance, fetchAttendance } from "../services/attendanceService";
+
 
 
 export const markAttendance = async (req: Request, res: Response) => {
@@ -17,4 +18,14 @@ export const markAttendance = async (req: Request, res: Response) => {
         res.status(500).json({ error: error.message });
     }
 
+}
+
+
+export const getAttendance = async (req: Request, res: Response) => {
+    try {
+        const data = await fetchAttendance();
+        res.json(data);
+    } catch (error: any) { //error: any is temporary
+        res.status(500).json({ error: error.message });
+    }
 }

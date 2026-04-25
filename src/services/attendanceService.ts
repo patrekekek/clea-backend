@@ -14,3 +14,22 @@ export const createAttendance = async (payload: {
 
     return data;
 }
+
+
+export const fetchAttendance = async () => {
+  const { data, error } = await supabase
+    .from("attendance")
+    .select(`
+      id,
+      date,
+      status,
+      students:student_id (
+        first_name,
+        last_name
+      )
+    `);
+
+  if (error) throw error;
+
+  return data;
+};

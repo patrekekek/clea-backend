@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import { markAttendance } from "../controllers/attendanceController";
+import { getAttendance, markAttendance } from "../controllers/attendanceController";
 
 const router = Router();
 
 router.post("/", markAttendance);
+router.get("/", getAttendance);
 
 export default router;
