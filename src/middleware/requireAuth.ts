@@ -1,6 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { createClient } from "@supabase/supabase-js";
 
+// will be implemented later
+// export interface AuthRequest extends Request {
+//     user?: {
+//         id: string,
+//         email?: string,
+//     }
+// }
+
 const supabase = createClient(
     process.env.SUPABASE_URL!,
     process.env.SUPABASE_ANON_KEY!
@@ -23,7 +31,7 @@ export const requireAuth = async (req: Request, res: Response,next: NextFunction
             return res.status(401).json({ error: "invalid token"});
         }
 
-        //attaching user to request here
+        //attaching user to request here //temporary will implement better type extends soon
         (req as any).user = data.user;
 
         next();

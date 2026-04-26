@@ -5,6 +5,7 @@ import "dotenv/config";
 import authRoutes from "./routes/authRoutes";
 import attendanceRoutes from "./routes/attendanceRoutes";
 import scoreRoutes from "./routes/scoreRoutes";
+import studentRoutes from "./routes/studentRoutes"
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.get("/", (req, res) => {
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/attendance", attendanceRoutes);
-app.use("/api/scores", scoreRoutes)
+app.use("/api/scores", scoreRoutes);
+app.use("/api/students", studentRoutes);
 
 
 app.listen(process.env.PORT || 5000, () => {
