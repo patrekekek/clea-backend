@@ -7,6 +7,32 @@ import {
     deleteStudent
 } from "../services/studentService";
 
+//get
+export const fetchStudents = async (_req: Request, res: Response) => {
+    try {
+        const students = await getStudents();
+        res.json(students);
+    } catch( error: any) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+export const fetchStudent = async (req: Request, res: Response) => {
+  try {
+    const student = await getStudentById(req.params.id as string);
+    res.json(student);
+  } catch {
+    res.status(404).json({ error: "Student not found" });
+  }
+};
+
+
+
+
+
+
+//crud
+
 export const addStudent = async (req: Request, res: Response) => {
     try {
         const {
@@ -37,23 +63,7 @@ export const addStudent = async (req: Request, res: Response) => {
     }
 };
 
-export const fetchStudents = async (_req: Request, res: Response) => {
-    try {
-        const students = await getStudents();
-        res.json(students);
-    } catch( error: any) {
-        res.status(500).json({ error: error.message });
-    }
-}
 
-export const fetchStudent = async (req: Request, res: Response) => {
-  try {
-    const student = await getStudentById(req.params.id as string);
-    res.json(student);
-  } catch {
-    res.status(404).json({ error: "Student not found" });
-  }
-};
 
 export const editStudent = async (req:Request, res: Response) => {
     try {
