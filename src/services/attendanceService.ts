@@ -13,6 +13,7 @@ export const fetchAttendance = async () => {
     .from("attendance")
     .select(`
       id,
+      student_id,
       date,
       status,
       students:student_id (
